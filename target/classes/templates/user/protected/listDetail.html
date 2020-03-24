@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <title>MyPilas</title>
+
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" href="/css/base.css"/>
+    <link rel="stylesheet" href="/css/layout.css"/>
+    <link rel="stylesheet" href="/css/componentes.css"/>
+  </head>
+
+  <body>
+
+    <header class="layout-cabecalho">
+      <div class="container">
+
+        <nav class="navegacao  navegacao--lista-detalhada">
+          <a href="/index.html"><img src="/imagens/logo.png" width="100" height="35" alt="MyPilas" /></a>
+        </nav>
+        
+      </div>
+    </header>
+
+    <section class="layout-lista-detalhada">
+      <div class="container">
+
+       <div class="lista">
+          <h1 class="lista__titulo">Lista Detalhada</h1>
+       </div>
+
+        <hr/>
+
+          <h4>
+            Mensagens recebidas
+          </h4>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>Mensagem</th>
+                <th>Data e Hora do Envio</th>
+              </tr>
+            </thead>
+
+            <tr>
+              <td th:text="${user.nome}">Nome</td>
+              <td th:text="${user.sobrenome}">Sobrenome</td>
+              <td th:text="${user.email}">E-mail</td>
+              <td th:text="${user.mensagem}">Mensagem</td>
+              <td th:text="${user.data}">Data e Hora do Envio</td>
+            </tr>
+          </table>
+
+        <hr/>
+        <a class="btn btn-light" th:href="@{/users/listar}">Voltar</a>
+        <hr/>
+
+      </div>
+    </section>
+
+    <footer class="layout-rodape">
+      <div class="container">
+        <p>&copy; MyPilas. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="/javascripts/app.js"></script>
+
+  </body>
+</html>

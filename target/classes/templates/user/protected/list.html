@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <title>MyPilas</title>
+
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" href="/css/base.css"/>
+    <link rel="stylesheet" href="/css/layout.css"/>
+    <link rel="stylesheet" href="/css/componentes.css"/>
+  </head>
+
+  <body>
+
+    <header class="layout-cabecalho">
+      <div class="container">
+
+        <nav class="navegacao  navegacao--lista">
+          <a href="/index.html"><img src="/imagens/logo.png" width="100" height="35" alt="MyPilas" /></a>
+        </nav>
+        
+      </div>
+    </header>
+
+    <section class="layout-lista">
+      <div class="container">
+
+        <hr/>
+
+        <div th:if="${users != null}">
+          <h4>
+            Lista de Mensagens
+          </h4>
+
+          <div th:if="${mensagem != null}">
+            <div class="alert alert-info" role="alert">
+              <span th:text="${mensagem}">mensagem</span>
+            </div>
+          </div>
+
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Data e Hora</th>
+              <th>Email</th>
+            </tr>
+            </thead>
+            <tr th:each="user : ${users}">
+              <td th:text="${user.data}">Data e Hora</td>
+              <td >
+                <a th:text="${user.email}" th:href="@{/users/{id}/listarDetalhe(id=${user.id})}">e-mail</a>
+              </td>
+              <td>
+                <!--<a class="btn btn-sm btn-info" th:href="@{/clients/{id}/atualizar(id=${client.id})}">Editar</a>-->
+                <a class="btn btn-sm btn-danger" th:href="@{/users/{id}/remover(id=${user.id})}">Excluir</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div th:if="${#lists.isEmpty(users)}">
+          <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 mensagens de clientes recebidas!
+          </div>
+        </div>
+        <hr/>
+
+        <a class="btn btn-light" href="/index">Voltar</a>
+
+      </div>
+    </section>
+
+    <hr/>
+
+    <footer class="layout-rodape">
+      <div class="container">
+        <p>&copy; MyPilas. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="/javascripts/app.js"></script>
+
+  </body>
+</html>
